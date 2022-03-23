@@ -175,7 +175,7 @@ chflags nohidden ~/Library
 defaults write com.apple.dock static-only -bool true
 
 # Single App Mode
-defaults write com.apple.dock single-app -bool true
+defaults write com.apple.dock single-app -bool false
 
 # # Set the icon size of Dock items
 defaults write com.apple.dock tilesize -int 30
