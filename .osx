@@ -135,6 +135,12 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
+# Sort folders first in Finder
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Enable scroll bars to be always shown
+defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+
 # Enable spring loading for directories
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 
@@ -165,14 +171,20 @@ chflags nohidden ~/Library
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
+# Show only active apps on the Dock
+defaults write com.apple.dock static-only -bool true
+
+# Single App Mode
+defaults write com.apple.dock single-app -bool true
+
 # # Set the icon size of Dock items
-# defaults write com.apple.dock tilesize -int 30
+defaults write com.apple.dock tilesize -int 30
 
 # # Speed up Mission Control animations
-# defaults write com.apple.dock expose-animation-duration -float 0.15
+defaults write com.apple.dock expose-animation-duration -float 0.15
 
 # # Make Dock icons of hidden applications translucent
-# defaults write com.apple.dock showhidden -bool true
+defaults write com.apple.dock showhidden -bool true
 
 # # Enable the 'reduce transparency' option. Save GPU cycles.
 # defaults write com.apple.universalaccess reduceTransparency -bool true
@@ -251,6 +263,15 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 
 # Disable continuous spell checking
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
+
+
+###############################################################################
+# Prevent Start On Lid Open                                                   #
+###############################################################################
+if [[ "$RUN_AS_ROOT" = true ]]; then
+  # Restart affected applications if `--no-restart` flag is not present.
+  sudo nvram autoboot=%00
+fi
 
 ###############################################################################
 # Kill/restart affected applications                                          #
