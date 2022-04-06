@@ -112,6 +112,7 @@
     # battery               # internal battery
     # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
+    my_alias                # Simple Alias Expansion
   )
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
@@ -1668,6 +1669,24 @@
   # Custom prefix.
   # typeset -g POWERLEVEL9K_TIME_PREFIX='at '
 
+  # https://github.com/romkatv/powerlevel10k/issues/1095
+  # Sample for Alias Expansion
+  function prompt_my_alias() {
+    p10k segment -b blue -f yellow -e -t '${my_expanded_command//\%/%%}'
+  }
+
+  function p10k-on-post-widget() {
+    emulate -L zsh
+    local buf=$PREBUFFER$BUFFER
+    local words=(${(Z+C+)buf})
+    words[1]=$aliases[$words[1]]
+    local cmd
+    [[ -n $words[1] ]] && cmd="$words"
+    if [[ $cmd != $my_expanded_command ]]; then
+      my_expanded_command="$cmd"
+      p10k display -r
+    fi
+  }
   # Example of a user-defined prompt segment. Function prompt_example will be called on every
   # prompt if `example` prompt segment is added to POWERLEVEL9K_LEFT_PROMPT_ELEMENTS or
   # POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS. It displays an icon and yellow text on red background
