@@ -264,6 +264,11 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # Disable continuous spell checking
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
+###############################################################################
+
+# Enable dictation
+defaults write com.apple.HIToolbox AppleDictationAutoEnable -int 1
+
 
 ###############################################################################
 # Prevent Start On Lid Open                                                   #
