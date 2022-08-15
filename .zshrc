@@ -22,6 +22,7 @@ export HOMEBREW_AUTO_UPDATE_SECS=604800
 # Enable plugins.
 plugins=(
   zsh-autosuggestions
+  zsh-syntax-highlighting
   web-search
   copypath
   copyfile
