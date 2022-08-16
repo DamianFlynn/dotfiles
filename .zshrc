@@ -82,7 +82,7 @@ bindkey "^[[B" history-substring-search-down
 # Completions.
 autoload -Uz compinit && compinit
 autoload bashcompinit && bashcompinit
-source /usr/local/etc/bash_completion.d/az
+source /opt/homebrew/etc/bash_completion.d/az
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
 # Case insensitive.
