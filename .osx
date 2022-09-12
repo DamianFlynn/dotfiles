@@ -269,6 +269,15 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 # Enable dictation
 defaults write com.apple.HIToolbox AppleDictationAutoEnable -int 1
 
+###############################################################################
+
+# Enable Amphetamine Enhancer
+
+wget https://github.com/x74353/Amphetamine-Enhancer/raw/master/Releases/Current/Amphetamine%20Enhancer.dmg
+hdiutil attach Amphetamine\ Enhancer.dmg
+cp -R /Volumes/Amphetamine\ Enhancer/Amphetamine\ Enhancer.app /Applications
+hdiutil eject  /Volumes/Amphetamine\ Enhancer
+rm Amphetamine\ Enhancer.dmg
 
 ###############################################################################
 # Prevent Start On Lid Open                                                   #
